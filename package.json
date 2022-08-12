@@ -58,7 +58,8 @@
     "remove-unused-declarations": "find lib -type f \\( -name '*.d.ts' ! -name index.d.ts \\) | xargs rm",
     "minimize-lib-files": "find lib -type f \\( -name '*.js' ! -name index.js \\) | while read fn; do terser $fn -o $fn; done",
     "build": "rm -Rf lib/* && ttsc && npm run remove-unused-declarations && npm run flow-type-gen && npm run minimize-lib-files && npm run test:lib",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "buildtest": "rimraf lib && tsc && rollup -c rollup.config.js"
   },
   "files": [
     "lib",
